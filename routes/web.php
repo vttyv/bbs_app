@@ -11,5 +11,9 @@
 |
 */
 
+
 Route::get('/','PostsController@index');
 Route::get('index','PostsController@index');
+Route::post('create/{id}','PostsController@create');
+// Route::post('reply','PostsController@reply');
+Route::delete('delete/{id}','PostsController@delete');

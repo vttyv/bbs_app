@@ -3,7 +3,11 @@
     <head>
         <meta charset="utf-8">
         <title>@yield('title')</title>
-        <!--link rel="stylesheet" href="/css/styles.css"-->
+
+        <script src="{{asset('js/app.js') }}"></script>
+
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/bbs.css') }}" rel="stylesheet">
     </head>
     <body>
         <header>

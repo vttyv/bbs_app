@@ -14,10 +14,13 @@ class PostsTableSeeder extends Seeder
         for( $i = 0 ; $i < 10; $i++ )
         {
             DB::table('posts')->insert([
+                'name' => 'のーねーむ',
                 'comment' => "テスト文字列です。",
+                'article_id' => '1',
                 'post_id' => NULL,
+                'fixed_id' => substr(md5('168.0.0.0'), 0, 7),
                 'created_at' => time(),
-                'updated_at' => time()
+                'updated_at' => time(),
             ]);
         }
     }

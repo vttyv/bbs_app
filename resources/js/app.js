@@ -6,12 +6,12 @@
  */
 
 require('./bootstrap');
-import 'vue-croppa/dist/vue-croppa.css'
+import 'vue-croppa/dist/vue-croppa.css';
 
 window.Vue = require('vue');
-import croppa from 'vue-croppa'
+import croppa from 'vue-croppa';
 
-Vue.use(croppa)
+Vue.use(croppa);
 
 /**
  * The following block of code may be used to automatically register your
@@ -62,10 +62,13 @@ var app = new Vue({
 
             if( !this.thumbnail ){
                 this.thumbnail = this.images[0];
-                this.croppa.imgUrl = this.thumbnail;
-                alert(this.croppa.imgUrl)
-                alert(this.thumbnail)
+                alert(this.thumbnail);
             }
+        },
+
+        selectedThumbnail: function(img){
+            alert(img)
+            this.thumbnail = img;
         }
     }
 });

@@ -13942,7 +13942,6 @@ var app = new Vue({
     },
     methods: {
         selectedFile: function selectedFile(e) {
-
             for (var i = 0, len = e.target.files.length; i < len; i++) {
                 var file = e.target.files[i];
                 alert(file);
@@ -13959,10 +13958,13 @@ var app = new Vue({
 
             if (!this.thumbnail) {
                 this.thumbnail = this.images[0];
-                this.croppa.imgUrl = this.thumbnail;
-                alert(this.croppa.imgUrl);
                 alert(this.thumbnail);
             }
+        },
+
+        selectedThumbnail: function selectedThumbnail(img) {
+            alert(img);
+            this.thumbnail = img;
         }
     }
 });

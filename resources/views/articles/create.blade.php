@@ -56,8 +56,8 @@
                                     <div v-for="image in images">
                                         <div class="item photo-frame-img">
                                             <img :src="image" />
-                                            <button class="btn btn-success" name="action" type="submit" value="send">サムネ</button>
-                                            <button class="btn btn-danger" name="action"  type="submit" value="send">削除</button>
+                                            <div class="btn btn-success" @click="selectedThumbnail(image)">サムネ</div>
+                                            <div class="btn btn-danger">削除</div>
                                         </div>
                                     </div>
                                     <label class="item photo-frame-input">

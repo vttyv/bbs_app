@@ -13958,13 +13958,24 @@ var app = new Vue({
 
             if (!this.thumbnail) {
                 this.thumbnail = this.images[0];
-                alert(this.thumbnail);
+                // alert(this.thumbnail);
             }
         },
 
         selectedThumbnail: function selectedThumbnail(img) {
-            alert(img);
+            // alert(img)
             this.thumbnail = img;
+        },
+
+        deletedImage: function deletedImage(img) {
+            for (var i = 0, len = this.images.length; i < len; i++) {
+                if (img === this.images[i]) {
+                    this.images.splice(i, 1);
+                    if (img === this.thumbnail) {
+                        this.thumbnail = this.images[0];
+                    }
+                }
+            }
         }
     }
 });

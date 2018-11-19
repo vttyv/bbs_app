@@ -57,7 +57,7 @@
                                         <div class="item photo-frame-img">
                                             <img :src="image" />
                                             <div class="btn btn-success" @click="selectedThumbnail(image)">サムネ</div>
-                                            <div class="btn btn-danger">削除</div>
+                                            <div class="btn btn-danger" @click="deletedImage(image)">削除</div>
                                         </div>
                                     </div>
                                     <label class="item photo-frame-input">

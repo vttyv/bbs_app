@@ -60,15 +60,26 @@ var app = new Vue({
                 this.images.push(URL.createObjectURL(file));
             }
 
-            if( !this.thumbnail ){
+            if ( !this.thumbnail ){
                 this.thumbnail = this.images[0];
-                alert(this.thumbnail);
+                // alert(this.thumbnail);
             }
         },
 
         selectedThumbnail: function(img){
-            alert(img)
+            // alert(img)
             this.thumbnail = img;
+        },
+
+        deletedImage: function(img){
+            for(var i = 0, len = this.images.length; i < len ; i++ ){
+                if ( img === this.images[i] ){
+                    this.images.splice(i, 1);
+                    if( img === this.thumbnail ){
+                        this.thumbnail = this.images[0];
+                    }
+                }
+            }
         }
     }
 });

@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use Socialite;
+use App\User;
+use Auth;
+use Session;
+
 class LoginController extends Controller
 {
     /*
@@ -20,12 +25,13 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -35,5 +41,39 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * Handle Social Login Request
+     *
+     * @return response
+     */
+    public function socialLogin($social)
+    {
+        return Socialite::driver($social)->redirect();
+    }
+
+    /**
+     * Obtain the user information from Social Logged in.
+     * @param $social
+     * @return Response
+     */
+    public function handleProviderCallback($social)
+    {
+        $userSocial = Socialite::driver($social)->user();
+        $user = User::where(['email' => $userSocial->getEmail()])->first();
+
+        if ($user) {
+            Auth::login($user);
+        } else {
+            $newuser = new User;
+            $newuser->name = $userSocial->getName();
+            $newuser->email = $userSocial->getEmail();
+            $newuser->save();
+
+            Auth::Login($newuser);
+        }
+        Session::put('message', 'ログインに成功しました。');
+        return redirect('/');
     }
 }

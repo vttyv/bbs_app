@@ -1,3 +1,105 @@
-body{
+.clear{
+    float: none;
+}
+main{
     margin: 20px 0 20px 25px;
+}
+
+
+/* SNSボタン */
+.btn-social {
+  width: 120px;
+  color: white;
+  margin:20px 5px 0 0;
+}
+
+/* Facebook */
+.btn-fb {
+    background-color: #3B5998;
+}
+
+/* Twitter */
+.btn-tw {
+    background-color: #00aced;
+}
+
+/* Google */
+.btn-gplus {
+    background-color: #dd4b39;
+}
+
+.nav-item{
+    padding: 0 5px;
+}
+.croppa-container {
+    width:50%;
+    vertical-align: top;
+}
+
+.croppa-container canvas{
+    width:100%;
+    height:100%;
+    vertical-align: top;
+}
+
+
+
+
+
+
+
+
+
+/*** Article photoframe. ***/
+.container-form{
+    padding: 0;
+    display: flex;
+}
+
+.item{
+    margin-right: 10px;
+    flex-basis: 100%;
+}
+.item .btn{
+    margin-bottom:15px;
+}
+.item .btn{
+    width:100%;
+}
+
+.photo-frame-thumbnail{
+    width: 100%;
+    box-shadow:0px 0px 15px 1px #ccc;
+    height:100px;
+    padding-top: 40px;
+    text-align: center;
+}
+.photo-frame-input{
+    width:100%;
+    box-shadow:0px 0px 15px 1px #ccc;
+    border: dotted gray;
+    border-width: 2px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.photo-frame-input:hover{
+    opacity: 0.5;
+    transition: opacity 0.2s ease-out;
+}
+.photo-frame-img{
+    width:100%;
+    box-shadow:0px 0px 15px 1px #ccc;
+    margin-bottom: 15px;
+}
+.photo-frame-img img{
+    width: 100%;
+
+}
+.photo-frame-img .btn{
+    width: 30%;
+    margin: 0;
+}
+.photo-frame-text{
+    padding:50% 0;
+    text-align: center;
 }

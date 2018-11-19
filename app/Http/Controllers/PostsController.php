@@ -27,10 +27,18 @@ class PostsController extends Controller
 
     public function create($id, CreatePost $request)
     {
+        $user = \Auth::user();
+
         $post = new Post;
-        $post->name = "ゲスト";
+        if ( $user ){
+            $post->user_id = $user->id;
+        } else {
+            $post->user_id = 1;
+        }
+
         $post->comment = $request->comment;
         $post->article_id = "1";
+
         if( is_numeric($id) ){
             $post->post_id = $id;
         } else {
@@ -44,8 +52,10 @@ class PostsController extends Controller
 
     public function delete($id)
     {
-        $post = Post::find($id);
-        $post->delete();
+        if( Post::find($id)->user_id == \Auth::user()->id ){
+            $post = Post::find($id);
+            $post->delete();
+        }
         return redirect('/index');
     }
 

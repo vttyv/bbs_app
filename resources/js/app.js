@@ -6,8 +6,12 @@
  */
 
 require('./bootstrap');
+import 'vue-croppa/dist/vue-croppa.css'
 
 window.Vue = require('vue');
+import croppa from 'vue-croppa'
+
+Vue.use(croppa)
 
 /**
  * The following block of code may be used to automatically register your
@@ -17,7 +21,8 @@ window.Vue = require('vue');
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// Vue.component()
 
 // const files = require.context('./', true, /\.vue$/i)
 
@@ -31,6 +36,36 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app'
+var app = new Vue({
+    el: "#app",
+    data: {
+        message: 'image data',
+        images: [],
+        thumbnail: null,
+        croppa: {}
+    },
+    methods:{
+        selectedFile: function(e){
+            for(var i = 0, len = e.target.files.length; i < len; i++){
+                var file = e.target.files[i];
+                alert(file);
+                if (!file) {
+                    alert('none');
+                    return false;
+                }
+                if (!file.type.match('image.*')) {
+                    alert('not image.');
+                    return false;
+                }
+                this.images.push(URL.createObjectURL(file));
+            }
+
+            if( !this.thumbnail ){
+                this.thumbnail = this.images[0];
+                this.croppa.imgUrl = this.thumbnail;
+                alert(this.croppa.imgUrl)
+                alert(this.thumbnail)
+            }
+        }
+    }
 });
